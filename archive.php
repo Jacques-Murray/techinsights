@@ -19,11 +19,11 @@ get_header(); ?>
                     </svg>
                     <span>Category</span>
                 </div>
-                <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
+                <h1 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
                     <?php single_cat_title(); ?>
                 </h1>
                 <?php if (category_description()): ?>
-                    <p class="text-[#9cabba] text-lg leading-relaxed">
+                    <p class="text-gray-600 text-lg leading-relaxed">
                         <?php echo category_description(); ?>
                     </p>
                 <?php endif; ?>
@@ -34,11 +34,11 @@ get_header(); ?>
                     </svg>
                     <span>Tag</span>
                 </div>
-                <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
+                <h1 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
                     #<?php single_tag_title(); ?>
                 </h1>
                 <?php if (tag_description()): ?>
-                    <p class="text-[#9cabba] text-lg leading-relaxed">
+                    <p class="text-gray-600 text-lg leading-relaxed">
                         <?php echo tag_description(); ?>
                     </p>
                 <?php endif; ?>
@@ -50,17 +50,17 @@ get_header(); ?>
                     <span>Author</span>
                 </div>
                 <div class="flex items-center justify-center gap-4 mb-6">
-                    <div class="w-16 h-16 bg-center bg-cover rounded-full bg-[#283039]" 
+                    <div class="w-16 h-16 bg-center bg-cover rounded-full bg-gray-200"
                          style='background-image: url("<?php echo esc_url(get_avatar_url(get_the_author_meta('ID'), 64)); ?>");'></div>
                     <div>
-                        <h1 class="text-white text-2xl md:text-3xl font-black leading-tight tracking-[-0.033em]">
+                        <h1 class="text-gray-900 text-2xl md:text-3xl font-black leading-tight tracking-[-0.033em]">
                             <?php the_author(); ?>
                         </h1>
-                        <p class="text-[#9cabba] text-sm"><?php echo count_user_posts(get_the_author_meta('ID')); ?> articles published</p>
+                        <p class="text-gray-600 text-sm"><?php echo count_user_posts(get_the_author_meta('ID')); ?> articles published</p>
                     </div>
                 </div>
                 <?php if (get_the_author_meta('description')): ?>
-                    <p class="text-[#9cabba] text-lg leading-relaxed">
+                    <p class="text-gray-600 text-lg leading-relaxed">
                         <?php the_author_meta('description'); ?>
                     </p>
                 <?php endif; ?>
@@ -71,7 +71,7 @@ get_header(); ?>
                     </svg>
                     <span>Archive</span>
                 </div>
-                <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
+                <h1 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
                     <?php
                     if (is_year()) {
                         echo 'Articles from ' . get_query_var('year');
@@ -83,18 +83,18 @@ get_header(); ?>
                     ?>
                 </h1>
             <?php else: ?>
-                <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
+                <h1 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
                     <?php the_archive_title(); ?>
                 </h1>
                 <?php if (the_archive_description()): ?>
-                    <div class="text-[#9cabba] text-lg leading-relaxed">
+                    <div class="text-gray-600 text-lg leading-relaxed">
                         <?php the_archive_description(); ?>
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
             
             <!-- Post count -->
-            <div class="mt-6 text-[#9cabba] text-sm">
+            <div class="mt-6 text-gray-500 text-sm">
                 <?php
                 global $wp_query;
                 $total_posts = $wp_query->found_posts;
@@ -113,7 +113,7 @@ get_header(); ?>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <article class="card group">
                 <a href="<?php the_permalink(); ?>" class="block w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-4 relative overflow-hidden"
-                   style='background-image: url("<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : 'https://placehold.co/400x225/1b2127/9cabba?text=Featured+Image'; ?>");'>
+                   style='background-image: url("<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : 'https://placehold.co/400x225/f1f5f9/64748b?text=Featured+Image'; ?>");'>
                     <!-- Hover overlay -->
                     <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div class="text-white text-sm font-medium bg-black/50 px-3 py-1 rounded-full">
@@ -121,33 +121,33 @@ get_header(); ?>
                         </div>
                     </div>
                     <!-- Category badge -->
-                    <?php 
+                    <?php
                     $categories = get_the_category();
                     if (!empty($categories)) {
                         $category = $categories[0];
-                        echo '<div class="absolute top-3 left-3 bg-[#283039] text-white text-xs font-medium px-2 py-1 rounded-full">' . esc_html($category->name) . '</div>';
+                        echo '<div class="absolute top-3 left-3 bg-gray-900 text-white text-xs font-medium px-2 py-1 rounded-full">' . esc_html($category->name) . '</div>';
                     }
                     ?>
                 </a>
                 <div class="space-y-3">
-                    <div class="flex items-center gap-2 text-[#9cabba] text-xs">
+                    <div class="flex items-center gap-2 text-gray-500 text-xs">
                         <span><?php echo get_the_date(); ?></span>
                         <span>&bull;</span>
                         <span><?php echo esc_html(get_comments_number()); ?> comments</span>
                     </div>
-                    <h2 class="text-white text-lg font-semibold leading-tight">
-                        <a href="<?php the_permalink(); ?>" class="hover:text-[#0c7ff2] transition-colors"><?php the_title(); ?></a>
+                    <h2 class="text-gray-900 text-lg font-semibold leading-tight">
+                        <a href="<?php the_permalink(); ?>" class="hover:text-blue-600 transition-colors"><?php the_title(); ?></a>
                     </h2>
-                    <p class="text-[#9cabba] text-sm leading-relaxed">
+                    <p class="text-gray-600 text-sm leading-relaxed">
                         <?php echo wp_trim_words(get_the_excerpt(), 18); ?>
                     </p>
-                    <div class="flex items-center justify-between pt-2 border-t border-[#283039]">
+                    <div class="flex items-center justify-between pt-2 border-t border-gray-200">
                         <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 bg-center bg-cover rounded-full bg-[#283039]" 
+                            <div class="w-6 h-6 bg-center bg-cover rounded-full bg-gray-200"
                                  style='background-image: url("<?php echo esc_url(get_avatar_url(get_the_author_meta('ID'), 24)); ?>");'></div>
-                            <span class="text-[#9cabba] text-xs">By <?php the_author(); ?></span>
+                            <span class="text-gray-500 text-xs">By <?php the_author(); ?></span>
                         </div>
-                        <div class="flex items-center gap-1 text-[#9cabba] text-xs">
+                        <div class="flex items-center gap-1 text-gray-500 text-xs">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256">
                                 <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"></path>
                             </svg>
@@ -158,13 +158,13 @@ get_header(); ?>
             </article>
         <?php endwhile; else: ?>
             <div class="col-span-full text-center py-12">
-                <div class="text-[#9cabba] mb-4">
+                <div class="text-gray-400 mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 256 256" class="mx-auto mb-4">
                         <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
                     </svg>
                 </div>
-                <h3 class="text-white text-xl font-semibold mb-2">No Articles Found</h3>
-                <p class="text-[#9cabba] mb-6">We couldn't find any articles matching your criteria.</p>
+                <h3 class="text-gray-900 text-xl font-semibold mb-2">No Articles Found</h3>
+                <p class="text-gray-600 mb-6">We couldn't find any articles matching your criteria.</p>
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="btn-primary">
                     Browse All Articles
                 </a>

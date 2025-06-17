@@ -19,7 +19,7 @@ get_header(); ?>
                 <span>Search Results</span>
             </div>
             
-            <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
+            <h1 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
                 <?php
                 global $wp_query;
                 $search_query = get_search_query();
@@ -34,11 +34,11 @@ get_header(); ?>
             </h1>
             
             <?php if (!empty($search_query)): ?>
-                <p class="text-[#9cabba] text-lg leading-relaxed mb-8">
+                <p class="text-gray-600 text-lg leading-relaxed mb-8">
                     <?php if ($total_results > 0): ?>
-                        Results for "<span class="text-white font-semibold"><?php echo esc_html($search_query); ?></span>"
+                        Results for "<span class="text-gray-900 font-semibold"><?php echo esc_html($search_query); ?></span>"
                     <?php else: ?>
-                        We couldn't find anything for "<span class="text-white font-semibold"><?php echo esc_html($search_query); ?></span>"
+                        We couldn't find anything for "<span class="text-gray-900 font-semibold"><?php echo esc_html($search_query); ?></span>"
                     <?php endif; ?>
                 </p>
             <?php endif; ?>

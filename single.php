@@ -9,7 +9,7 @@ get_header(); ?>
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class('text-white max-w-4xl mx-auto'); ?>>
+    <article id="post-<?php the_ID(); ?>" <?php post_class('max-w-4xl mx-auto'); ?>>
         
         <!-- Article Header -->
         <header class="mb-8">
@@ -73,11 +73,11 @@ get_header(); ?>
             </div>
             
             <!-- Article Actions -->
-            <div class="flex flex-wrap items-center justify-between gap-4 p-4 bg-[#1b2127] rounded-lg border border-[#283039]">
+            <div class="flex flex-wrap items-center justify-between gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
                 <div class="flex items-center gap-4">
                     <!-- Categories -->
                     <div class="flex items-center gap-2">
-                        <span class="text-[#9cabba] text-sm">Categories:</span>
+                        <span class="text-gray-600 text-sm">Categories:</span>
                         <div class="flex gap-2">
                             <?php the_category(', '); ?>
                         </div>
@@ -111,14 +111,14 @@ get_header(); ?>
         
         <!-- Tags -->
         <?php if (has_tag()): ?>
-            <div class="flex flex-wrap items-center gap-4 p-4 bg-[#1b2127] rounded-lg border border-[#283039] mb-8">
-                <span class="text-[#9cabba] text-sm font-medium">Tags:</span>
+            <div class="flex flex-wrap items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm mb-8">
+                <span class="text-gray-600 text-sm font-medium">Tags:</span>
                 <div class="flex flex-wrap gap-2">
                     <?php
                     $tags = get_the_tags();
                     if ($tags) {
                         foreach ($tags as $tag) {
-                            echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="bg-[#283039] hover:bg-[#0c7ff2] text-[#9cabba] hover:text-white px-3 py-1 rounded-full text-sm transition-colors">#' . esc_html($tag->name) . '</a>';
+                            echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="bg-gray-100 hover:bg-blue-600 text-gray-600 hover:text-white px-3 py-1 rounded-full text-sm transition-colors">#' . esc_html($tag->name) . '</a>';
                         }
                     }
                     ?>
@@ -129,11 +129,11 @@ get_header(); ?>
         <!-- Author Bio -->
         <div class="card mb-8">
             <div class="flex items-start gap-4">
-                <div class="w-16 h-16 bg-center bg-cover rounded-full bg-[#283039] flex-shrink-0"
+                <div class="w-16 h-16 bg-center bg-cover rounded-full bg-gray-200 flex-shrink-0"
                      style='background-image: url("<?php echo esc_url(get_avatar_url(get_the_author_meta('ID'), 64)); ?>");'></div>
                 <div class="flex-1">
-                    <h3 class="text-white text-lg font-semibold mb-2">About <?php the_author(); ?></h3>
-                    <p class="text-[#9cabba] text-sm leading-relaxed mb-3">
+                    <h3 class="text-gray-900 text-lg font-semibold mb-2">About <?php the_author(); ?></h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-3">
                         <?php
                         $author_description = get_the_author_meta('description');
                         echo $author_description ? esc_html($author_description) : 'This author hasn\'t provided a bio yet.';
@@ -141,12 +141,12 @@ get_header(); ?>
                     </p>
                     <div class="flex items-center gap-4">
                         <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"
-                           class="text-[#0c7ff2] hover:text-[#60a5fa] text-sm transition-colors">
+                           class="text-blue-600 hover:text-blue-800 text-sm transition-colors">
                             View all posts by <?php the_author(); ?> →
                         </a>
                         <?php if (get_the_author_meta('user_url')): ?>
                             <a href="<?php echo esc_url(get_the_author_meta('user_url')); ?>"
-                               class="text-[#0c7ff2] hover:text-[#60a5fa] text-sm transition-colors"
+                               class="text-blue-600 hover:text-blue-800 text-sm transition-colors"
                                target="_blank" rel="noopener noreferrer">
                                 Website
                             </a>
@@ -176,12 +176,12 @@ get_header(); ?>
     
     if ($related_posts): ?>
         <section class="mt-12" aria-labelledby="related-posts-heading">
-            <h2 id="related-posts-heading" class="text-white text-2xl font-bold mb-6">Related Articles</h2>
+            <h2 id="related-posts-heading" class="text-gray-900 text-2xl font-bold mb-6">Related Articles</h2>
             <div class="content-grid">
                 <?php foreach ($related_posts as $related_post): setup_postdata($related_post); ?>
                     <article class="card group">
                         <a href="<?php the_permalink(); ?>" class="block w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-4 relative overflow-hidden"
-                           style='background-image: url("<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : 'https://placehold.co/400x225/1b2127/9cabba?text=Related+Post'; ?>");'>
+                           style='background-image: url("<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : 'https://placehold.co/400x225/f1f5f9/64748b?text=Related+Post'; ?>");'>
                             <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <div class="text-white text-sm font-medium bg-black/50 px-3 py-1 rounded-full">
                                     Read Article
@@ -189,13 +189,13 @@ get_header(); ?>
                             </div>
                         </a>
                         <div class="space-y-3">
-                            <div class="flex items-center gap-2 text-[#9cabba] text-xs">
+                            <div class="flex items-center gap-2 text-gray-500 text-xs">
                                 <span><?php echo get_the_date(); ?></span>
                             </div>
-                            <h3 class="text-white text-lg font-semibold leading-tight">
-                                <a href="<?php the_permalink(); ?>" class="hover:text-[#0c7ff2] transition-colors"><?php the_title(); ?></a>
+                            <h3 class="text-gray-900 text-lg font-semibold leading-tight">
+                                <a href="<?php the_permalink(); ?>" class="hover:text-blue-600 transition-colors"><?php the_title(); ?></a>
                             </h3>
-                            <p class="text-[#9cabba] text-sm leading-relaxed">
+                            <p class="text-gray-600 text-sm leading-relaxed">
                                 <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
                             </p>
                         </div>
